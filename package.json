@@ -1,0 +1,17 @@
+{
+  "name": "cubebuilder",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@clack/prompts": "^1.5.1",
+    "figlet": "^1.11.0",
+    "picocolors": "^1.1.1"
+  }
+}
