@@ -31,7 +31,7 @@ export async function create_server_file(name: string) {
     try {
         const $result = await fs.exists(target_path)
         if (!$result) {
-            await fs.mkdir(target_path);
+            await fs.mkdir(target_path, { recursive: true });
 
             const result = await the_select_function("Do you accept the EULA agreement?", [
                 {

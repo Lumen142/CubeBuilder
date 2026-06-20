@@ -9,7 +9,6 @@ import { download } from "./src/services/download.ts";
 import { $ } from "bun"
 import * as path from "path";
 import os from "os"
-import figlet from "figlet"
 import { success, error } from "./src/packages/Message.ts";
 
 type OptionType = {
@@ -37,8 +36,15 @@ async function openFolderInExplorer(folderPath: string): Promise<void> {
 }
 
 async function main() {
-    const text = await figlet.text("CubeBuilder")
-    console.log(text)
+    const banner = `
+    ____      _          ____        _ _     _           
+    / ___|   _| |__   ___| __ ) _   _(_) | __| | ___ _ __ 
+    | |  | | | | '_ \\ / _ \\  _ \\| | | | | |/ _\` |/ _ \\ '__|
+    | |__| |_| | |_) |  __/ |_) | |_| | | | (_| |  __/ |   
+    \\____\\__,_|_.__/ \\___|____/ \\__,_|_|_\\__,_|\\___|_|   
+    `;
+
+    console.log(banner)
 
     const choose = await the_select_function("What do you want to do?", [
         {value: "setup_server", label:"I want to set up a Minecraft server."},
@@ -109,7 +115,7 @@ async function main() {
             process.exit(0)
         }
     } else {
-        await openFolderInExplorer(path.join(__dirname, ".\\servers"))
+        await openFolderInExplorer("servers")
     }
 }
 
