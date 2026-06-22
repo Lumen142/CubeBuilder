@@ -18,5 +18,3 @@ export async function download(target_path: string, file_name: string, url: stri
 
     console.log(success("The download was completed successfully."))
 }
-
-//download("./","server","https://api.papermc.io/v2/projects/paper/versions/1.20.4/builds/496/downloads/paper-1.20.4-496.jar")

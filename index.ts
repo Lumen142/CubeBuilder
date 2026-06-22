@@ -7,18 +7,26 @@ import { create_server_file } from "./src/packages/ServerManager.ts"
 import { download } from "./src/services/download.ts";
 
 import { $ } from "bun"
+import fs from "fs"
 import * as path from "path";
 import os from "os"
-import { success, error } from "./src/packages/Message.ts";
+import { success, error, warn } from "./src/packages/Message.ts";
 
 type OptionType = {
     label: string;
     value: string;
 };
 
-async function openFolderInExplorer(folderPath: string): Promise<void> {
-  const platform = os.platform();
+const platform: string = os.platform();
 
+const tested_os = {
+    "win32": true,
+    "linux": true,
+    "darwin": false
+}
+const os_emojis = {"win32": "🪟","linux": "🐧","darwin": "🍎"}
+
+async function openFolderInExplorer(folderPath: string): Promise<void> {
   try {
     if (platform === "win32") {
     const safePath = path.win32.normalize(folderPath);
@@ -28,9 +36,9 @@ async function openFolderInExplorer(folderPath: string): Promise<void> {
     } else {
       await $`xdg-open ${folderPath}`;
     }
-    console.log(success(`Folder opened successfully.: ${folderPath}`));
+    console.log(success(`Folder opened successfully: ${folderPath}`));
   } catch (err) {
-    console.log(error("An error occurred while opening the folder.: " + err));
+    console.log(error("An error occurred while opening the folder: " + err));
     process.exit(0)
   }
 }
@@ -42,13 +50,26 @@ async function main() {
     | |  | | | | '_ \\ / _ \\  _ \\| | | | | |/ _\` |/ _ \\ '__|
     | |__| |_| | |_) |  __/ |_) | |_| | | | (_| |  __/ |   
     \\____\\__,_|_.__/ \\___|____/ \\__,_|_|_\\__,_|\\___|_|   
+
+    Operating system used: ${platform} ${(os_emojis as any)[platform]}
     `;
 
     console.log(banner)
 
+    if (platform in tested_os) {
+        if ( (tested_os as any)[platform] ) {
+            console.log(success("This software has been tested on your operating system! 🥳"))
+        } else {
+            console.log(warn("This software has not been tested on your operating system. 🥺"))
+        }
+    } else {
+        console.log(error("We have no information regarding compatibility. We couldn't access any data related to your operating system, which is why crashes or malfunctions are possible. 😭"))
+    }
+
     const choose = await the_select_function("What do you want to do?", [
         {value: "setup_server", label:"I want to set up a Minecraft server."},
-        {value: "servers", label:"I want to view the servers I set up."}
+        {value: "servers", label:"I want to view the servers I set up."},
+        { value: 'exit', label: 'Close Program', hint: "Exit the program. 😭" }
     ])
 
     if (choose == "setup_server") {
@@ -56,7 +77,7 @@ async function main() {
 
         const server = await the_select_function("Which Software Do You Want to Use?", [
             { value: 'paper', label: 'PaperMC', hint: "High-performance Minecraft server software. It fixes bugs, improves lag, and supports Bukkit/Spigot plugins." },
-            { value: 'purpur', label: 'Purpur', hint: "A fork of Paper. It offers maximum performance and adds hundreds of new customization options for game mechanics." },
+            { value: 'purpur', label: 'Purpur', hint: "A fork of Paper. It offers maximum performance and adds hundreds of new customization options for game mechanics." }
         ])
 
         if (server == "paper") {
@@ -114,7 +135,17 @@ async function main() {
 
             process.exit(0)
         }
-    } else {
+    } else if (choose == "exit") {
+        console.log(success("See you later! 🙃"))
+        process.exit(0)
+    }
+    else if (choose == "servers") {
+        if (!fs.existsSync("./servers")) {
+            console.log(warn(`The "./servers" folder does not exist. It is created by the system.`))
+            fs.mkdirSync("./servers", { recursive:true })
+            console.log(success(`The "./servers" folder has been created.`))
+        }
+
         await openFolderInExplorer("servers")
     }
 }
