@@ -146,7 +146,7 @@ async function main() {
             console.log(success(`The "./servers" folder has been created.`))
         }
 
-        await openFolderInExplorer("servers")
+        await openFolderInExplorer(path.resolve(process.cwd(), "servers"))
     }
 }
 

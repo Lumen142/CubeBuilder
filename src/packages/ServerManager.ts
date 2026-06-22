@@ -26,7 +26,7 @@ async function memory_question() {
 }
 
 export async function create_server_file(name: string) {
-    const target_path = path.join(__dirname, `../../servers/${name}`)
+    const target_path = path.join(process.cwd(), `./servers/${name}`)
 
     try {
         const $result = await fs.exists(target_path)
