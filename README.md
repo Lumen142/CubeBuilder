@@ -1,4 +1,7 @@
 
+![Logo](<img width="2560" height="1440" alt="CubeBuilderBanner" src="https://github.com/user-attachments/assets/6d06a86f-68a5-45bf-8c00-45576efb30d3" />)
+
+
 # CubeBuilder V1.0.0
 
 Our goal is to enable you to manage the basic Minecraft server folder structure through a single piece of software. As CubeBuilder develops, it will support many more Minecraft server software packages.
