@@ -1,6 +1,5 @@
 
-![Logo](<img width="2560" height="1440" alt="CubeBuilderBanner" src="https://github.com/user-attachments/assets/6d06a86f-68a5-45bf-8c00-45576efb30d3" />)
-
+![Logo](https://cdn.discordapp.com/attachments/1499870395136737434/1518528552444629053/CubeBuilderBanner.png?ex=6a3ae82b&is=6a3996ab&hm=12290588c1bc2f4a5bf66b297380f30628860b2b049bb6716530569de58031fa&)
 
 # CubeBuilder V1.0.0
 
