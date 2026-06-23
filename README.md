@@ -26,7 +26,7 @@ Our goal is to enable you to manage the basic Minecraft server folder structure 
 
 ## FAQ
 
-### ❓ Is the JDK downloaded automatically?
+#### ❓ Is the JDK downloaded automatically?
 
 Unfortunately, it is not downloaded automatically in JDK version 1.0.0. However, this process was automated in later versions. If no other version is available, you will need to wait for future releases.
 
@@ -46,7 +46,7 @@ Currently, CubeBuilder supports PaperMC and Purpur. Additional server software m
 
 CubeBuilder automatically creates the standard server directory structure, downloads the correct server JAR file, and generates platform-specific startup files like `run.sh` and `run.bat`.
 
-### ❓ Can I configure the server manually?
+#### ❓ Can I configure the server manually?
 
 Yes. CubeBuilder automatically generates the initial server setup, including the required folder structure inside the `servers` directory, the server files, and startup scripts (`run.sh` / `run.bat`). It also automatically creates and accepts the EULA during installation.
 
