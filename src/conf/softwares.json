@@ -1,0 +1,17 @@
+{
+    "PaperMC": {
+        "api": {
+            "versions": "https://api.papermc.io/v2/projects/paper",
+            "builds": "https://api.papermc.io/v2/projects/paper/versions/",
+
+            "download_template": "https://api.papermc.io/v2/projects/paper/versions/1.20.4/builds/496/downloads/paper-1.20.4-496.jar"
+        }
+    },
+    "Purpur": {
+        "api": {
+            "versions": "https://api.purpurmc.org/v2/purpur",
+            
+            "download_template": "https://api.purpurmc.org/v2/purpur/1.20.4/latest/download"
+        }
+    }
+}
