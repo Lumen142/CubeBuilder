@@ -23,7 +23,12 @@ Our goal is to enable you to manage the basic Minecraft server folder structure 
 | :-------- | :------------------------- |
 | PaperMC | ✅
 | Purpur | ✅
+
 ## FAQ
+
+### ❓ Is the JDK downloaded automatically?
+
+Unfortunately, it is not downloaded automatically in JDK version 1.0.0. However, this process was automated in later versions. If no other version is available, you will need to wait for future releases.
 
 #### ❓ What is CubeBuilder?
 
